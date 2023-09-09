@@ -21,7 +21,7 @@ Um mit dem F&E-Projekt zu beginnen, befolgen Sie diese Schritte:
 1. **Repository klonen**: Klonen Sie dieses GitHub-Repository auf Ihre lokale Maschine mit dem folgenden Befehl:
 
    ```bash
-   git clone https://github.com/your-username/F&E-Projekt.git
+   git clone https://git.fh-muenster.de/vc174887/fep_virtualthreads.git
 
     Erstellen und Ausführen: Navigieren Sie zum Projektverzeichnis und befolgen Sie die Anweisungen in der README-Datei oder der Dokumentation jeder Version, um die entsprechende Anwendungsversion zu erstellen und auszuführen.
 
