@@ -15,8 +15,7 @@ public class App
         String lon = "-0.118092";
 
 
-        PrimaryController controller = new PrimaryController();    //100ns
-        String weatherData = controller.getWeatherData(lat, lon);  //100ms
-        controller.visualizeWeatherData(weatherData);               //100ns
+        String weather = WeatherService.readWeatherFor(lat, lon);
+        System.out.println(weather);
     }
 }
