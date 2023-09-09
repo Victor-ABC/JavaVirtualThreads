@@ -7,10 +7,10 @@ import java.util.concurrent.CompletableFuture;
 public class WeatherService {
 
     public static String readWeatherFor(String city) {
-        Location location = WeatherController.getLocationUsingCityName(city);
-        String url = WeatherController.buildURL(location);
-        String weatherData = WeatherController.getWeatherData(url);
-        return WeatherController.visualizeWeatherData(weatherData);
+        Location location = WeatherController.getLocationUsingCityName(city); //100  ms
+        String url = WeatherController.buildURL(location);                       //10 ns
+        String weatherData = WeatherController.getWeatherData(url);             //100 ms
+        return WeatherController.visualizeWeatherData(weatherData);         //10ns
     }
 
     public static CompletableFuture<String> readWeatherAsyncFor(String city) {

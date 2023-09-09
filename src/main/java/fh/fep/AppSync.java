@@ -1,11 +1,9 @@
 package fh.fep;
 
-import java.net.MalformedURLException;
-
 public class AppSync {
 
     public static void main(String[] args) {
-        String weather = WeatherService.readWeatherFor("Paris");
+        String weather = WeatherService.readWeatherFor("Münster");
         System.out.println(weather);
     }
 }
