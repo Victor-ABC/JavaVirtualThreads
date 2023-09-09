@@ -1,4 +1,4 @@
-package fh.fep;
+package fh.fep.webserver;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
