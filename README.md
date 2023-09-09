@@ -43,16 +43,10 @@ Jede Version enthält Tools zur Leistungsanalyse, die es Ihnen ermöglichen, Fol
 
     Ausführungszeit: Messen Sie die Zeit, die jede Version benötigt, um Aufgaben abzuschließen.
 
-Mitwirkende
 
-Wir begrüßen Beiträge aus der Open-Source-Community! Wenn Sie das Projekt verbessern, Funktionen hinzufügen oder Fehler beheben möchten, zögern Sie nicht, Pull-Anfragen zu stellen.
-Lizenz
 
-Dieses Projekt steht unter der MIT-Lizenz - siehe die LICENSE-Datei für weitere Details.
-Dank
 
-Wir möchten der Java-Community und den Entwicklern, die zur asynchronen Programmierung und Virtual Threads in Java beigetragen haben, danken.
+Dieses Projekt steht unter der MIT-Lizenz:)
+
 
 Vielen Dank für Ihr Interesse am F&E-Projekt! Viel Spaß beim Programmieren!
-
-rust
