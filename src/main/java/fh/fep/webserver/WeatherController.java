@@ -6,23 +6,23 @@ import org.json.simple.JSONObject;
 
 import java.net.MalformedURLException;
 
-public class WeatherController {
+public class WeatherController implements AbstractWeatherController{
 
 
-    static final String apiKey = "752998c2f6fbb86c57bb497e360e3a0d"; //victors-Account
-    static final String weatherBaseURL = "https://api.openweathermap.org/data/2.5/weather?";
+    final String apiKey = "752998c2f6fbb86c57bb497e360e3a0d"; //victors-Account
+    final String weatherBaseURL = "https://api.openweathermap.org/data/2.5/weather?";
 
-    static final String weatherBaseURLgetLatLonUsingName = "http://api.openweathermap.org/geo/1.0/direct?q=";
+    final String weatherBaseURLgetLatLonUsingName = "http://api.openweathermap.org/geo/1.0/direct?q=";
 
-    public static String buildURL(Location location) {
+    public String buildURL(Location location) {
         return "lat="+location.lat + "&lon="+location.lon + "&appid="+apiKey;
     }
 
-    public static String visualizeWeatherData(String data) {
+    public String visualizeWeatherData(String data) {
         return "### Wetter ### \n" + data;
     }
 
-    public static Location getLocationUsingCityName(String cityName) {
+    public Location getLocationUsingCityName(String cityName) {
         Location location = null;
         try {
             APIConnector apiConnectorWeather = new APIConnector(weatherBaseURLgetLatLonUsingName);
@@ -42,7 +42,7 @@ public class WeatherController {
      * @param url the URL
      * @return String containing relevant information
      */
-    public static String getWeatherData(String url) {
+    public String getWeatherData(String url) {
 
         JSONObject todaysWeather = null;
         try {
