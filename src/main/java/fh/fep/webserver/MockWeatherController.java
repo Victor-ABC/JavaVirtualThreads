@@ -1,30 +1,42 @@
 package fh.fep.webserver;
 
 
-import java.text.DecimalFormat;
-import org.json.simple.JSONObject;
-
-import java.net.MalformedURLException;
-
 public class MockWeatherController implements AbstractWeatherController{
 
 
-    static final String apiKey = "752998c2f6fbb86c57bb497e360e3a0d"; //victors-Account
-    static final String weatherBaseURL = "https://api.openweathermap.org/data/2.5/weather?";
+    final String apiKey = "12345678"; //victors-Account
+    int taskId;
 
-    static final String weatherBaseURLgetLatLonUsingName = "http://api.openweathermap.org/geo/1.0/direct?q=";
+    public MockWeatherController(int taskId) {
+        this.taskId = taskId;
+    }
+
+    void printInfo() {
+        if(taskId == 1) {
+            System.out.println("Task-NR:" + taskId + " by Thread-ID: " + Thread.currentThread());
+        }
+    }
 
     public String buildURL(Location location) {
+        printInfo();
         return "lat="+location.lat + "&lon="+location.lon + "&appid="+apiKey;
     }
 
     public String visualizeWeatherData(String data) {
+        printInfo();
         return "### Wetter ### \n" + data;
     }
 
     public Location getLocationUsingCityName(String cityName) {
-            String lat = "50.91123";
-            String lon =  "-1.23";
+        printInfo();
+        //Mock HTTP Request
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String lat = "50.91123";
+        String lon = "-1.23";
         return new Location(lat, lon);
     }
 
@@ -34,9 +46,17 @@ public class MockWeatherController implements AbstractWeatherController{
      * @return String containing relevant information
      */
     public String getWeatherData(String url) {
-            return "Temperatur: " + "18" + " Grad Celsius" +
-                    "\nDruck: " + "1030" +
-                    "\nFeuchtigkeit: " + "30";
+        printInfo();
+        //Mock HTTP Request
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return """
+                Temperatur: 18 Grad Celsius
+                Druck: 1030
+                Feuchtigkeit: 30""";
     }
 }
 

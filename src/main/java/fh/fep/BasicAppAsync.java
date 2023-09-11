@@ -1,11 +1,10 @@
 package fh.fep;
 
 
-import java.net.MalformedURLException;
 import java.util.concurrent.CompletableFuture;
 
 
-public class AppAsync {
+public class BasicAppAsync {
 
     public static void main(String[] args) {
         String city = "Münster"; // Replace with the desired city
