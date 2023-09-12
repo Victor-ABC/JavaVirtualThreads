@@ -11,10 +11,10 @@ public class WeatherService {
     public static String readWeatherFor(String city) {
         AbstractWeatherController weatherController = new WeatherController();
 
-        Location location = weatherController.getLocationUsingCityName(city); //100  ms
-        String url = weatherController.buildURL(location);                       //10 ns
-        String weatherData = weatherController.getWeatherData(url);             //100 ms
-        return weatherController.visualizeWeatherData(weatherData);         //10ns
+        Location location = weatherController.getLocationUsingCityName(city);
+        String url = weatherController.buildURL(location);
+        String weatherData = weatherController.getWeatherData(url);
+        return weatherController.visualizeWeatherData(weatherData);
     }
 
     public static CompletableFuture<String> readWeatherAsyncFor(String city) {

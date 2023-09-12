@@ -43,7 +43,9 @@ public class WeatherController implements AbstractWeatherController{
      * @return String containing relevant information
      */
     public String getWeatherData(String url) {
-
+        if(1 != 1) {
+            throw new RuntimeException("exception");
+        }
         JSONObject todaysWeather = null;
         try {
             APIConnector apiConnectorWeather = new APIConnector(weatherBaseURL);

@@ -18,11 +18,9 @@ public class Task implements Callable<String> {
     @Override
     public String call() {
         AbstractWeatherController weatherController = new MockWeatherController(taskId);
-
-        Location location = weatherController.getLocationUsingCityName(city); //100  ms
-        String url = weatherController.buildURL(location);                       //10 ns
-        String weatherData = weatherController.getWeatherData(url);             //100 ms
-        return "Request Nr. " + taskId + " " + weatherController.visualizeWeatherData(
-                weatherData);         //10ns
+        Location location = weatherController.getLocationUsingCityName(city);
+        String url = weatherController.buildURL(location);
+        String weatherData = weatherController.getWeatherData(url);
+        return "Request Nr. " + taskId + " " + weatherController.visualizeWeatherData(weatherData);
     }
 }
