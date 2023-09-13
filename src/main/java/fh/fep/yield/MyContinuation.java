@@ -1,16 +1,17 @@
 package fh.fep.yield;
 
+
 import jdk.internal.vm.Continuation;
 import jdk.internal.vm.ContinuationScope;
 
 public class MyContinuation {
     // --enable-preview --add-exports java.base/jdk.internal.vm=ALL-UNNAMED
     public static void main(String[] args) {
-        var sopce = new ContinuationScope("hello");
+        var scope = new ContinuationScope("hello");
         var continuation = new Continuation(
-                sopce, () -> {
+                scope, () -> {
                 System.out.println("A");
-                Continuation.yield(sopce); //pointer ist bis hier her gekommen
+                Continuation.yield(scope); // Pointer ist bis hier her gekommen
                 System.out.println("B");
             }
         );
