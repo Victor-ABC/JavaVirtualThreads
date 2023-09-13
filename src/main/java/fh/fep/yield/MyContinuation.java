@@ -8,6 +8,7 @@ public class MyContinuation {
     // --enable-preview --add-exports java.base/jdk.internal.vm=ALL-UNNAMED
     public static void main(String[] args) {
         var scope = new ContinuationScope("hello");
+
         var continuation = new Continuation(
                 scope, () -> {
                 System.out.println("A");
@@ -15,8 +16,10 @@ public class MyContinuation {
                 System.out.println("B");
             }
         );
+
         continuation.run();
         System.out.println("C");
+
         continuation.run();
         System.out.println("D");
     }

@@ -9,12 +9,12 @@ import java.util.concurrent.CompletableFuture;
 public class WeatherService {
 
     public static String readWeatherFor(String city) {
-        AbstractWeatherController weatherController = new WeatherController(); //10 ns
+        AbstractWeatherController weatherController = new WeatherController();  // 10ns
 
-        Location location = weatherController.getLocationUsingCityName(city); //100 ms
-        String url = weatherController.buildURL(location); //10ns
-        String weatherData = weatherController.getWeatherData(url); //100ms
-        return weatherController.visualizeWeatherData(weatherData); //10 ns
+        Location location = weatherController.getLocationUsingCityName(city);   // 100ms
+        String url = weatherController.buildURL(location);              // 10ns
+        String weatherData = weatherController.getWeatherData(url);     // 100ms
+        return weatherController.visualizeWeatherData(weatherData);     // 10ns
     }
 
     public static CompletableFuture<String> readWeatherAsyncFor(String city) {

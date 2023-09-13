@@ -1,6 +1,5 @@
 package fh.fep.webserver;
 
-
 import java.text.DecimalFormat;
 import org.json.simple.JSONObject;
 
@@ -14,9 +13,7 @@ public class WeatherController implements AbstractWeatherController{
         this.taskId = i;
     }
 
-    public WeatherController()  {
-
-    }
+    public WeatherController()  {}
 
     final String apiKey = "752998c2f6fbb86c57bb497e360e3a0d"; //victors-Account
     final String weatherBaseURL = "https://api.openweathermap.org/data/2.5/weather?";
@@ -28,7 +25,6 @@ public class WeatherController implements AbstractWeatherController{
             System.out.println("Task-NR:" + taskId + " by Thread-ID: " + Thread.currentThread());
         }
     }
-
 
     public String buildURL(Location location) {
         printInfo();
@@ -43,16 +39,23 @@ public class WeatherController implements AbstractWeatherController{
     public Location getLocationUsingCityName(String cityName) {
         printInfo();
         Location location = null;
+
         try {
             APIConnector apiConnectorWeather = new APIConnector(weatherBaseURLgetLatLonUsingName);
-            JSONObject weatherJSONObject = (JSONObject) apiConnectorWeather.getJSONArray(cityName + "&appid=" + apiKey)
-                    .get(0); //HTTP Request
+
+            // HTTP Request
+            JSONObject weatherJSONObject = (JSONObject) apiConnectorWeather
+                    .getJSONArray(cityName + "&appid=" + apiKey)
+                    .get(0);
+
             String lat = weatherJSONObject.get("lat").toString();
             String lon =  weatherJSONObject.get("lon").toString();
+
             location = new Location(lat, lon);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+
         return location;
     }
 
@@ -63,21 +66,24 @@ public class WeatherController implements AbstractWeatherController{
      */
     public String getWeatherData(String url) {
         printInfo();
-        if(1 != 1) {
-            throw new RuntimeException("exception");
-        }
         JSONObject todaysWeather = null;
+
         try {
             APIConnector apiConnectorWeather = new APIConnector(weatherBaseURL);
-            JSONObject weatherJSONObject = apiConnectorWeather.getJSONObject(url); //HTTP Request
+
+            // HTTP Request
+            JSONObject weatherJSONObject = apiConnectorWeather.getJSONObject(url);
             todaysWeather = (JSONObject) weatherJSONObject.get("main");
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } //- 273.15
+        }
+
         if(todaysWeather != null) {
             double temp = (Double) todaysWeather.get("temp") - 273.15;
+
             DecimalFormat df = new DecimalFormat("##.##");
             String formattedTemp = df.format(temp);
+
             return "Temperatur: " + formattedTemp + " Grad Celsius" +
                     "\nDruck: " + todaysWeather.get("pressure") +
                     "\nFeuchtigkeit: " + todaysWeather.get("humidity");

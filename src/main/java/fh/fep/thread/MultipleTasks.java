@@ -9,19 +9,19 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class MultipleTasks {
-
     public static void main(String[] args) {
-        //Start Time
+        // Start Time
         long startTime = System.currentTimeMillis();
         ExecutionStrategy strategy = ExecutionStrategy.JavaVirtualThreads;
         compute(strategy, 24, 10);
-        //End Time
+
+        // End Time
         long estimatedTime = System.currentTimeMillis() - startTime;
         System.out.println("Duration: " + estimatedTime + " Milliseconds");
     }
 
     private static void compute(ExecutionStrategy strategy, int numberOfThreads, int numberOfTasks) {
-        //Assign Tasks to ThreadPool
+        // Assign Tasks to ThreadPool
         Map<Integer, Future<String>> futureMapOfRandomNumbers = null;
         switch (strategy) {
             case JavaPlatformThreads -> futureMapOfRandomNumbers = runFixedThreadPool(numberOfThreads,
@@ -29,12 +29,14 @@ public class MultipleTasks {
             case JavaVirtualThreads -> futureMapOfRandomNumbers = runVirtualThreadPool(numberOfTasks);
             default -> System.out.println("unsopported");
         }
-        //Wait for every result to return (blocking)
+
+        // Wait for every result to return (blocking)
         for (Entry<Integer, Future<String>> entry : futureMapOfRandomNumbers.entrySet()) {
             try {
                 Integer key_taskId = entry.getKey();
                 String value_weather = entry.getValue().get();
-                //System.out.println(key_taskId + ":" + value_weather);
+
+                // System.out.println(key_taskId + ":" + value_weather);
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
             }

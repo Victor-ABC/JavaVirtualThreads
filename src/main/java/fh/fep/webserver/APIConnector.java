@@ -9,11 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
-
 public class APIConnector {
-
     private final String urlString;
-
 
     public APIConnector(String urlString) throws MalformedURLException {
         this.urlString = urlString;
@@ -27,28 +24,28 @@ public class APIConnector {
             conn.setRequestMethod("GET");
             conn.connect();
 
-            //Check if connect is made
+            // Check if connect is made
             int responseCode = conn.getResponseCode();
 
             if (responseCode != 200) {
                 throw new RuntimeException("HttpResponseCode: " + responseCode);
             } else {
-
                 StringBuilder informationString = new StringBuilder();
                 Scanner scanner = new Scanner(url.openStream());
 
                 while (scanner.hasNext()) {
                     informationString.append(scanner.nextLine());
                 }
-                scanner.close();
 
+                scanner.close();
                 JSONParser parse = new JSONParser();
 
                 return (JSONArray) parse.parse(String.valueOf(informationString));
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
@@ -60,28 +57,28 @@ public class APIConnector {
             conn.setRequestMethod("GET");
             conn.connect();
 
-            //Check if connect is made
+            // Check if connect is made
             int responseCode = conn.getResponseCode();
 
             if (responseCode != 200) {
                 throw new RuntimeException("HttpResponseCode: " + responseCode);
             } else {
-
                 StringBuilder informationString = new StringBuilder();
                 Scanner scanner = new Scanner(url.openStream());
 
                 while (scanner.hasNext()) {
                     informationString.append(scanner.nextLine());
                 }
-                scanner.close();
 
+                scanner.close();
                 JSONParser parse = new JSONParser();
 
                 return (JSONObject) parse.parse(String.valueOf(informationString));
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
         return null;
     }
 }

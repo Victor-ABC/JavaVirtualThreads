@@ -7,7 +7,6 @@ import fh.fep.webserver.WeatherController;
 import java.util.concurrent.Callable;
 
 public class Task implements Callable<String> {
-
     public int taskId;
     public String city;
 

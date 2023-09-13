@@ -2,9 +2,7 @@ package fh.fep.webserver;
 
 
 public class MockWeatherController implements AbstractWeatherController{
-
-
-    final String apiKey = "12345678"; //victors-Account
+    final String apiKey = "12345678"; // victors-Account
     int taskId;
 
     public MockWeatherController(int taskId) {
@@ -29,14 +27,17 @@ public class MockWeatherController implements AbstractWeatherController{
 
     public Location getLocationUsingCityName(String cityName) {
         printInfo();
-        //Mock HTTP Request
+
+        // Mock HTTP Request
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
         String lat = "50.91123";
         String lon = "-1.23";
+
         return new Location(lat, lon);
     }
 
@@ -47,12 +48,14 @@ public class MockWeatherController implements AbstractWeatherController{
      */
     public String getWeatherData(String url) {
         printInfo();
-        //Mock HTTP Request
+
+        // Mock HTTP Request
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
         return """
                 Temperatur: 18 Grad Celsius
                 Druck: 1030
