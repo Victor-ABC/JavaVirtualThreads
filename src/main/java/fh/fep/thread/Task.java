@@ -3,6 +3,7 @@ package fh.fep.thread;
 import fh.fep.webserver.AbstractWeatherController;
 import fh.fep.webserver.Location;
 import fh.fep.webserver.MockWeatherController;
+import fh.fep.webserver.WeatherController;
 import java.util.concurrent.Callable;
 
 public class Task implements Callable<String> {
@@ -17,7 +18,8 @@ public class Task implements Callable<String> {
 
     @Override
     public String call() {
-        AbstractWeatherController weatherController = new MockWeatherController(taskId);
+        AbstractWeatherController weatherController = new WeatherController(taskId);
+
         Location location = weatherController.getLocationUsingCityName(city);
         String url = weatherController.buildURL(location);
         String weatherData = weatherController.getWeatherData(url);

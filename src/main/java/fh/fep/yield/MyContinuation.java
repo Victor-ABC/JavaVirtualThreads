@@ -10,7 +10,7 @@ public class MyContinuation {
         var continuation = new Continuation(
                 sopce, () -> {
                 System.out.println("A");
-                Continuation.yield(sopce);
+                Continuation.yield(sopce); //pointer ist bis hier her gekommen
                 System.out.println("B");
             }
         );

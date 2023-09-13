@@ -14,7 +14,7 @@ public class MultibleTasks {
         //Start Time
         long startTime = System.currentTimeMillis();
         ExecutionStrategy strategy = ExecutionStrategy.JavaVirtualThreads;
-        compute(strategy, 10, 1_000_000);
+        compute(strategy, 24, 10);
         //End Time
         long estimatedTime = System.currentTimeMillis() - startTime;
         System.out.println("Duration: " + estimatedTime + " Milliseconds");
