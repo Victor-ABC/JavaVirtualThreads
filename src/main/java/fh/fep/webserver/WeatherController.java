@@ -8,21 +8,40 @@ import java.net.MalformedURLException;
 
 public class WeatherController implements AbstractWeatherController{
 
+    private int taskId;
+
+    public WeatherController(int i)  {
+        this.taskId = i;
+    }
+
+    public WeatherController()  {
+
+    }
 
     final String apiKey = "752998c2f6fbb86c57bb497e360e3a0d"; //victors-Account
     final String weatherBaseURL = "https://api.openweathermap.org/data/2.5/weather?";
 
     final String weatherBaseURLgetLatLonUsingName = "http://api.openweathermap.org/geo/1.0/direct?q=";
 
+    void printInfo() {
+        if(taskId == 1) {
+            System.out.println("Task-NR:" + taskId + " by Thread-ID: " + Thread.currentThread());
+        }
+    }
+
+
     public String buildURL(Location location) {
+        printInfo();
         return "lat="+location.lat + "&lon="+location.lon + "&appid="+apiKey;
     }
 
     public String visualizeWeatherData(String data) {
+        printInfo();
         return "### Wetter ### \n" + data;
     }
 
     public Location getLocationUsingCityName(String cityName) {
+        printInfo();
         Location location = null;
         try {
             APIConnector apiConnectorWeather = new APIConnector(weatherBaseURLgetLatLonUsingName);
@@ -43,7 +62,10 @@ public class WeatherController implements AbstractWeatherController{
      * @return String containing relevant information
      */
     public String getWeatherData(String url) {
-
+        printInfo();
+        if(1 != 1) {
+            throw new RuntimeException("exception");
+        }
         JSONObject todaysWeather = null;
         try {
             APIConnector apiConnectorWeather = new APIConnector(weatherBaseURL);
